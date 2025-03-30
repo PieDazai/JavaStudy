@@ -1,5 +1,4 @@
-import OOP.Dog;
-import OOP.Duck;
+import OOP.*;
 import Pc.Class.*;
 import Pc.Enums.*;
 
@@ -14,14 +13,21 @@ public class Main {
     private  static final String FIND_REG_NUMBER = "(\\d{3})(\\d{3})(\\d{2})(\\d{2})";
 
     public static void main(String[] args) {
-        NAME_REG();
+        /*NAME_REG();
         NumberReg();
         workOfComputer();
         workOfDate();
         workOfWine();
         workOfExtends();
+        workOfInterface();
 
-        }
+        Users user1 = new Users("Vanya", 23);
+        Users user2 = new Users("Vanya", 23);
+        System.out.println(user1.toString());
+        System.out.println(user1.equals(user2));*/
+
+
+    }
 
     public static void NAME_REG(){
       String input = new Scanner(System.in).nextLine().trim();
@@ -110,13 +116,30 @@ public class Main {
 
     public static void workOfExtends(){
 
-        Dog dog = new Dog("Rex", 5.600, 12);
-        Duck duck = new Duck("Alice", 5.600, 12);
+        Animal dog = new Dog("Rex", 3.600, 2);
+        Dog dog1 = new Dog("Ben", 5.600, 12);
+        Animal duck = new Duck("Alice", 5.600, 12);
+        Duck duck1 = new Duck("DuckDuck", 9.600, 32);
         dog.move();
         dog.walk();
+        // dog.bark(); --- NO bark
+        dog1.bark();
+
         duck.move();
         duck.walk();
+        duck1.kryak();
 
     }
+
+    public static void workOfInterface(){
+        TurnController controller = new TurnController();
+        Fen fen = new Fen();
+        TV tv = new TV();
+        Lamp lamp = new Lamp();
+        controller.turnOnDevice(tv);
+        controller.turnOffDevice(tv);
+        controller.turnOnDevice(lamp);
+    }
+
 
 }

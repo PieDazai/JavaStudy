@@ -11,4 +11,7 @@ public class Dog extends Animal {
     public void move(){
         System.out.println("Собакак по кличке " + super.getName()+" бежит по земле");
     }
+    public void bark(){
+        System.out.println(super.getName()+" is barking...");
+    }
 }
