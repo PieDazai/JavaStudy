@@ -37,13 +37,17 @@ public class ArrayListWork {
        addToList("hello1");
        addToList("hello2");
        addToList("hello3");
-       printList();
+      // printList();
 
-       deleteToList("hellj1");
-       deleteToList("hello1");
-       printList();
+//       deleteToList("hellj1");
+//       deleteToList("hello1");
+//       printList();
+//
+//       printByIndex(1);
 
-       printByIndex(1);
+        listNumber.stream().forEach(x -> System.out.println(x));
+        listNumber.stream().filter(x -> x.endsWith("2")).forEach(x -> System.out.println(x));
+
     }
 
 

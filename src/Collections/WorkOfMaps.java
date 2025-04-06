@@ -12,6 +12,10 @@ public class WorkOfMaps {
        // makeMap();
         makeSuperMap();
 
+
+
+
+
     }
 
     public static void addToList(String str, Set<String> set) {
@@ -87,27 +91,17 @@ public class WorkOfMaps {
 
         addToMap("Первое поле", Kirill);
         addToMap("Второе поле", Nastya);
+       // printToMap();
+       // deleteToMap("21312");
+       // deleteToMap("Первое поле");
         printToMap();
-        deleteToMap("21312");
-        deleteToMap("Первое поле");
-        printToMap();
+
+
+
 
     }
 
 
-    public static Map<String, Set<String>> getNames() {
-        return names;
-    }
 
-    public static void setNames(Map<String, Set<String>> names) {
-        WorkOfMaps.names = names;
-    }
 
-    public static Map<String, Map<String, Integer>> getFIO() {
-        return FIO;
-    }
-
-    public static void setFIO(Map<String, Map<String, Integer>> FIO) {
-        WorkOfMaps.FIO = FIO;
-    }
 }

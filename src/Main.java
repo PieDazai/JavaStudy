@@ -1,11 +1,13 @@
 import OOP.*;
 import Pc.Class.*;
 import Pc.Enums.*;
+import com.sun.source.tree.BreakTree;
 
 import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.function.*;
 
 public class Main {
 
@@ -24,9 +26,33 @@ public class Main {
         Users user1 = new Users("Vanya", 23);
         Users user2 = new Users("Vanya", 23);
         System.out.println(user1.toString());
-        System.out.println(user1.equals(user2));*/
+        System.out.println(user1.equals(user2));
+        workOfLyambda();*/
+
+        Map<String, Map<String, Integer>> maps = new TreeMap<>();
+        Map<String, Integer> Kirill = new TreeMap<>();
+        Kirill.put("Кирилл", 19);
+
+        Map<String, Integer> Kirill1 = new TreeMap<>();
+        Kirill.put("Кирилл", 193);
+
+        Map<String, Integer> Nastya = new TreeMap<>();
+        Nastya.put("Настя", 18);
+
+        maps.put("Первое поле", Kirill);
+        maps.put("Второе поле", Nastya);
 
 
+       int max = maps.entrySet().stream().flatMap(x -> x.getValue().values().stream()).
+               mapToInt(e -> e).max().getAsInt();
+
+        System.out.println(max);
+
+
+    }
+
+    public static void printer(InterfaceTwo two){
+        two.print(4);
     }
 
     public static void NAME_REG(){
@@ -141,5 +167,30 @@ public class Main {
         controller.turnOnDevice(lamp);
     }
 
+    public static  void workOfLyambda(){
+        InterfaceTwo inTwo = (x) -> System.out.println("Print: " + x);
+        inTwo.print(5);
+
+        Predicate<Integer> pred = (x) -> x > 10;
+        System.out.println(pred.test(45));
+
+        BinaryOperator<Integer> binInt = (x, y) -> x * y;
+        System.out.println(binInt.apply(10, 2));
+
+        UnaryOperator<Integer> unInt = (x) -> x + x;
+        System.out.println(unInt.apply(4));
+
+        Function<String, Integer> parse = Integer::parseInt;
+        System.out.println(parse.apply("123")+2);
+
+        Consumer<Integer> consumer = (x) -> System.out.println(x * x + 3);
+        consumer.accept(3);
+
+        System.out.println("new лямбда");
+        printer(x -> System.out.println(x * x + 3));
+
+        Supplier<String> supplier = () -> "hello world";
+        System.out.println(supplier.get());
+    }
 
 }
