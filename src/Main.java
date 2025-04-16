@@ -1,8 +1,14 @@
+import AnotherMain.InterfaceTwo;
+import AnotherMain.Wine;
 import OOP.*;
 import Pc.Class.*;
 import Pc.Enums.*;
-import com.sun.source.tree.BreakTree;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
@@ -14,7 +20,7 @@ public class Main {
     private static final String reg = "([А-яёЁ-]+\\s){2}([А-яёЁ-]+)";
     private  static final String FIND_REG_NUMBER = "(\\d{3})(\\d{3})(\\d{2})(\\d{2})";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         /*NAME_REG();
         NumberReg();
         workOfComputer();
@@ -29,24 +35,51 @@ public class Main {
         System.out.println(user1.equals(user2));
         workOfLyambda();*/
 
-        Map<String, Map<String, Integer>> maps = new TreeMap<>();
-        Map<String, Integer> Kirill = new TreeMap<>();
-        Kirill.put("Кирилл", 19);
-
-        Map<String, Integer> Kirill1 = new TreeMap<>();
-        Kirill.put("Кирилл", 193);
-
-        Map<String, Integer> Nastya = new TreeMap<>();
-        Nastya.put("Настя", 18);
-
-        maps.put("Первое поле", Kirill);
-        maps.put("Второе поле", Nastya);
+        workOfComputer();
 
 
-       int max = maps.entrySet().stream().flatMap(x -> x.getValue().values().stream()).
-               mapToInt(e -> e).max().getAsInt();
+    }
 
-        System.out.println(max);
+    static void workOfException() throws IOException {
+
+        File file = new File("tests/test.txt");
+        File file1 = new File("data/data2.txt");
+        //file1.mkdir();
+        try {
+            file1.createNewFile();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        List<String> numbers = new ArrayList<>();
+        for (int i = 1; i < 31; i++) {
+            numbers.add(String.valueOf(i));
+        }
+
+        Files.readAllLines(Path.of("tests/test.txt")).forEach(System.out::println);
+
+        try {
+            Files.write(Path.of("data/data2.txt"), numbers);
+        }
+        catch (Exception e){
+            System.out.println("Problem");
+        }
+
+        Files.copy(
+                Path.of("data/data2.txt"),
+                Path.of("tests/test.txt"),
+                StandardCopyOption.REPLACE_EXISTING
+        );
+
+        Files.walk(Path.of("C:\\GitProj\\JavaStudy\\JavaLessons")).map(f -> f.toFile()).
+                filter(f-> f.isFile()).forEach(f -> System.out.println(f.getName()));
+
+        Date date = new Date(file.lastModified());
+        System.out.println(date);
+
+       // printFile(file);
+        System.out.println(file.length());
 
 
     }
@@ -123,7 +156,7 @@ public class Main {
     public static void workOfComputer(){
         Processor processor = new Processor(Gerc.THREE_GERC, CoreCount.EIGHT_COUNT, Maker.RUSSIA, 400);
         Corememory corememory = new Corememory(Typememory.DDR4, 30, 500);
-        Harddisk harddisk = new Harddisk(TypeDisk.SSD, 1024, 300);
+        Harddisk harddisk = new Harddisk(TypeDisk.HDD, 1024, 300);
         Display display = new Display(50.5, 1200, Typedisplay.VA);
         Keyboard keyboard = new Keyboard(Typekeyboard.PROVOD, 600, IsPodsvetka.YES_SVET);
 

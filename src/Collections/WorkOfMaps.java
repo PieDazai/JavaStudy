@@ -13,6 +13,10 @@ public class WorkOfMaps {
         makeSuperMap();
 
 
+        int max = FIO.entrySet().stream().flatMap(x -> x.getValue().values().stream()).
+                mapToInt(e -> e).max().getAsInt();
+
+        System.out.println(max);
 
 
 

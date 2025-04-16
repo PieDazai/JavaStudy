@@ -18,8 +18,8 @@ public class Computer {
     }
 
     public void weightcount (){
-       double ves = proc.getWeight()+ memory.getWeight()+hdd.getWeight()+
-               display.getWeight()+ keyboard.getWeight();
+        double ves = proc.getWeight()+ memory.getWeight()+hdd.getWeight()+
+                display.getWeight()+ keyboard.getWeight();
         System.out.println("All weight: " + ves);
     }
 

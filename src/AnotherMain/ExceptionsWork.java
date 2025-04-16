@@ -1,3 +1,5 @@
+package AnotherMain;
+
 import java.util.Scanner;
 
 public class ExceptionsWork {
